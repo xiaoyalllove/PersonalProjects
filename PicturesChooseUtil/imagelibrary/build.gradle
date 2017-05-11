@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.github.chrisbanes.photoview:library:1.2.4'
+
+    // photo
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.jph.takephoto:takephoto_library:4.0.3'
+
+    //toast
+    compile 'com.xiaoyalllove:Personalprojects_viewlib:1.0.0'
+    //gson
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+}
