@@ -14,7 +14,10 @@
         takePhoto.onCreate(savedInstanceState);
    }
 
- 
+ maxSelects: 最大获取相片数量。
+ isRateTailor: 照片是否需要固定比例剪裁。
+ tailoringRate: 照片固定剪裁比例，width/height。
+
  ChooseImageBean chooseImageBean = new ChooseImageBean();
                  chooseImageBean.setMaxSelects(4);
                  chooseImageBean.setRateTailor(false);
