@@ -3,14 +3,17 @@ package com.lzy.imagepicker.manager;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.content.FileProvider;
 
 import com.jph.takephoto.app.TakePhoto;
 import com.jph.takephoto.model.CropOptions;
 import com.jph.takephoto.model.TException;
 import com.jph.takephoto.model.TResult;
+import com.jph.takephoto.uitl.TConstant;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +36,7 @@ public class CropManager {
      * @param imagePicker
      * @param takePhoto
      */
-    public void cropConfig(ImagePicker imagePicker, TakePhoto takePhoto) {
+    public void cropConfig(Activity activity,ImagePicker imagePicker, TakePhoto takePhoto) {
         if (imagePicker.getSelectImageCount() == 1) {
             //设置图片裁剪
             CropOptions.Builder builder = new CropOptions.Builder();
@@ -59,7 +62,8 @@ public class CropManager {
             //获取需要的参数
             ArrayList<ImageItem> mImageItems = imagePicker.getSelectedImages();
             String imagePath = mImageItems.get(0).path;
-            Uri imageUri = Uri.parse("file://" + imagePath);
+            //修复7.0 (在Android7.0中为了提高私有文件的安全性 )通过FileProviderde得到文件的路径
+            Uri imageUri = FileProvider.getUriForFile(activity, TConstant.getFileProviderName(activity), new File(imagePath));
 
             try {
                 takePhoto.onCrop(imageUri, imagePicker.getOutputUri(), builder.create());

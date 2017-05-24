@@ -86,7 +86,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
             @Override
             public void onClick(View v) {
                 if (imagePicker.getSelectImageCount() == 1) {
-                    CropManager.getInstance().cropConfig(imagePicker, takePhoto);
+                    CropManager.getInstance().cropConfig(ImagePreviewActivity.this, imagePicker, takePhoto);
                 }
             }
         });

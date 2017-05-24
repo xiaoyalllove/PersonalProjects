@@ -107,7 +107,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
             @Override
             public void onClick(View v) {
                 DataHolder.getInstance().save(DataHolder.DH_CURRENT_IMAGE_FOLDER_ITEMS, imagePicker.getCurrentImageFolderItems());
-                CropManager.getInstance().cropConfig(imagePicker, takePhoto);
+                CropManager.getInstance().cropConfig(ImageGridActivity.this,imagePicker, takePhoto);
             }
         });
     }
